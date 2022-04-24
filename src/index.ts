@@ -6,7 +6,7 @@ const fs = require('fs');
 import { tokenize } from "kuromojin";
 import os from 'os';
 
-const dictionaryUrl = 'http://monoroch.net/kinshi/housouKinshiYougo.xml';
+const dictionaryUrl = 'https://raw.githubusercontent.com/tubone24/textlint-rule-no-hoso-kinshi-yogo/master/housouKinshiYougo.xml';
 const referenceUrl = 'http://monoroch.net/kinshi/';
 const dictionaryPath = `${os.tmpdir()}/housouKinshiYougo.xml`;
 const maxAge = 604800;
