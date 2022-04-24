@@ -25,7 +25,6 @@
   ],
   "scripts": {
     "build": "textlint-scripts build",
-    "prepublish": "yarn run --if-present build",
     "test": "textlint-scripts test",
     "watch": "textlint-scripts build --watch"
   },
