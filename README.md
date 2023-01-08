@@ -7,6 +7,14 @@ Tentative source to download the dictionary file from a different URL, since run
 
 The rights to housouKinshiYougo.xml belong to http://monoroch.net/
 
+## How to use
+
+Add your package.json
+
+```
+"textlint-rule-no-hoso-kinshi-yogo": "github:tubone24/textlint-rule-no-hoso-kinshi-yogo",
+```
+
 ## Error
 
 ```
