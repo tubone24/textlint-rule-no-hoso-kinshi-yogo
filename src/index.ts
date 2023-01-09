@@ -8,7 +8,7 @@ import os from 'os';
 
 const dictionaryUrl = 'https://www.dropbox.com/s/qy7qd44k1bfbsl1/housouKinshiYougo.xml?dl=0';
 const referenceUrl = 'http://monoroch.net/kinshi/';
-const dictionaryPath = `${os.tmpdir()}/housouKinshiYougo.xml`;
+const dictionaryPath = `${process.env["RUNNER_TMP"] || os.tmpdir()}/housouKinshiYougo.xml`;
 const maxAge = 604800;
 
 interface Word {
