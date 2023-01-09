@@ -4,11 +4,9 @@ import { TextlintRuleModule, TextlintRuleReporter } from '@textlint/types';
 import fastXmlParser from 'fast-xml-parser';
 const fs = require('fs');
 import { tokenize } from "kuromojin";
-import os from 'os';
 
-const dictionaryUrl = 'https://www.dropbox.com/s/qy7qd44k1bfbsl1/housouKinshiYougo.xml?dl=0';
 const referenceUrl = 'http://monoroch.net/kinshi/';
-const dictionaryPath = `${process.env["RUNNER_TMP"] || os.tmpdir()}/housouKinshiYougo.xml`;
+const dictionaryPath = `${process.env["RUNNER_TMP"] || __dirname}/housouKinshiYougo.xml`;
 const maxAge = 604800;
 
 interface Word {
@@ -27,26 +25,6 @@ interface Dictionary {
   };
 }
 
-const fetchAndCacheDictionary = async () => {
-  try {
-    const response = await fetch(dictionaryUrl);
-
-    if (response.status >= 400) {
-      throw new Error(`${response.status}: ${response.statusText}`);
-    }
-
-    const text = await response.text();
-
-    fs.writeFileSync(dictionaryPath, text);
-
-    return text;
-  } catch (e) {
-    console.error(e);
-
-    return;
-  }
-}
-
 const readDictionaryFromCache = ({ ignoreMaxAge = false }: { ignoreMaxAge?: boolean }) => {
   console.log(dictionaryPath);
   try {
@@ -61,9 +39,6 @@ const readDictionaryFromCache = ({ ignoreMaxAge = false }: { ignoreMaxAge?: bool
 }
 
 const getDictionary = async () => {
-  if (!process.env["RUNNER_TMP"]) {
-    await fetchAndCacheDictionary()
-  }
   const text = readDictionaryFromCache({ ignoreMaxAge: true });
 
   if (!text) {
