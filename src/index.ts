@@ -6,7 +6,7 @@ const fs = require('fs');
 import { tokenize } from "kuromojin";
 
 const referenceUrl = 'http://monoroch.net/kinshi/';
-const dictionaryPath = `${process.env["RUNNER_TMP"]}/housouKinshiYougo.xml`;
+const dictionaryPath = `${process.env["RUNNER_TMP"] || "."}/housouKinshiYougo.xml`;
 const maxAge = 604800;
 
 interface Word {
